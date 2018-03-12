@@ -101,39 +101,5 @@ public class SLFLList<E> extends SLList<E>
 		return new SNode<E>();
 	}
 
-	// The following two methods are to be implemented as part of an exercise
-	public Object[] toArray() {
-		// TODO es in Exercise 3
-		Object[] array = new Object[this.length()];
-		SNode<E> tempFirst = first;
-		for (int i = 0 ; i < length; i++) {
-			array[i] = tempFirst;
-			tempFirst = tempFirst.getNext() ;
-		}
-		return array;
-	}
 
-
-	public <T1> T1[] toArray(T1[] array) {
-		// TODO as in Exercise 3
-		if (array.length < this.length()) {
-			// if arr.length < this.size, allocate a new array of the same
-			// type as arr (components of the new array are set to be of equal
-			// runtime type as components of the original array arr)
-			// and big enough to hold all the elements in this set. For
-			// this, we need to use the Array class....
-			array = (T1[]) Array.newInstance(array.getClass().getComponentType(), this.length());
-		} else if (array.length > this.length())
-			// Set to null all those positions of arr that won't be used.
-			for (int j=this.length(); j< array.length; j++)
-				array[j] = null;
-		SNode<E> tempFirst = first ;
-		for (int i = 0; i < array.length; i ++) {
-			if (i==array.length)
-				break;
-			array[i] = (T1) tempFirst.getNext();   // It is assumed E can be casted to T
-			tempFirst = tempFirst.getNext() ;
-		}
-		return array;
-	}
 }
